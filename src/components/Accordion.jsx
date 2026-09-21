@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import siteConfig from '../siteConfig'
-import Reveal from './Reveal'
 
-function FAQItem({ item, isOpen, onToggle, index }) {
-  const panelId = `faq-panel-${index}`
-  const buttonId = `faq-button-${index}`
+function AccordionItem({ item, isOpen, onToggle, index, idPrefix }) {
+  const panelId = `${idPrefix}-panel-${index}`
+  const buttonId = `${idPrefix}-button-${index}`
 
   return (
     <div className="border-b border-charcoal/10">
@@ -42,31 +40,23 @@ function FAQItem({ item, isOpen, onToggle, index }) {
   )
 }
 
-export default function FAQ() {
-  const { faq } = siteConfig
+// Acordeón accesible y reutilizable. `idPrefix` evita colisiones de id
+// cuando hay más de un acordeón en la misma página.
+export default function Accordion({ items, idPrefix = 'accordion' }) {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section id="faq" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <Reveal className="text-center">
-          <h2 className="font-serif text-3xl font-semibold text-charcoal sm:text-4xl">{faq.titulo}</h2>
-        </Reveal>
-
-        <Reveal delay={120}>
-          <div className="mt-10">
-            {faq.lista.map((item, i) => (
-              <FAQItem
-                key={item.pregunta}
-                item={item}
-                index={i}
-                isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
-              />
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </section>
+    <div>
+      {items.map((item, i) => (
+        <AccordionItem
+          key={item.pregunta}
+          item={item}
+          index={i}
+          idPrefix={idPrefix}
+          isOpen={openIndex === i}
+          onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
+        />
+      ))}
+    </div>
   )
 }

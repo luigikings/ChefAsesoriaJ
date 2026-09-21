@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChefHat, Menu, X } from 'lucide-react'
+import { Link, NavLink } from 'react-router-dom'
 import siteConfig from '../siteConfig'
 
 export default function Navbar() {
@@ -15,6 +16,12 @@ export default function Navbar() {
 
   const handleNavClick = () => setOpen(false)
 
+  const linkClass = ({ isActive }) =>
+    `text-sm font-medium transition-colors hover:text-terracotta ${isActive ? 'text-terracotta' : 'text-charcoal/80'}`
+
+  const mobileLinkClass = ({ isActive }) =>
+    `rounded-md px-3 py-2.5 text-base font-medium hover:bg-charcoal/5 ${isActive ? 'text-terracotta' : 'text-charcoal/80'}`
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
@@ -22,38 +29,28 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#inicio" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2">
           <ChefHat className="h-6 w-6 text-terracotta" strokeWidth={1.5} />
-          <span className="font-serif text-lg font-semibold tracking-tight text-charcoal">
-            {siteConfig.chef.nombre}
-          </span>
-          <span className="hidden h-4 w-px bg-charcoal/20 sm:block" />
-          <span className="hidden font-sans text-xs uppercase tracking-widest text-charcoal/60 sm:block">
-            {siteConfig.chef.tituloProfesional}
-          </span>
-        </a>
+          <span className="font-serif text-lg font-semibold tracking-tight text-charcoal">{siteConfig.brand.nombre}</span>
+        </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {siteConfig.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-charcoal/80 transition-colors hover:text-terracotta"
-            >
+            <NavLink key={item.to} to={item.to} className={linkClass} end={item.to === '/'}>
               {item.label}
-            </a>
+            </NavLink>
           ))}
-          <a
-            href="#contacto"
+          <Link
+            to="/contacto"
             className="rounded-full bg-terracotta px-5 py-2.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-terracotta-dark"
           >
             Contactar
-          </a>
+          </Link>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-charcoal md:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-charcoal lg:hidden"
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -63,25 +60,20 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-charcoal/10 bg-cream md:hidden">
+        <div className="border-t border-charcoal/10 bg-cream lg:hidden">
           <div className="flex flex-col gap-1 px-5 py-4">
             {siteConfig.nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={handleNavClick}
-                className="rounded-md px-3 py-2.5 text-base font-medium text-charcoal/80 hover:bg-charcoal/5"
-              >
+              <NavLink key={item.to} to={item.to} onClick={handleNavClick} className={mobileLinkClass} end={item.to === '/'}>
                 {item.label}
-              </a>
+              </NavLink>
             ))}
-            <a
-              href="#contacto"
+            <Link
+              to="/contacto"
               onClick={handleNavClick}
               className="mt-2 rounded-full bg-terracotta px-5 py-3 text-center text-sm font-semibold text-cream"
             >
               Contactar
-            </a>
+            </Link>
           </div>
         </div>
       )}

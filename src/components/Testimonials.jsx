@@ -1,19 +1,17 @@
 import { Quote } from 'lucide-react'
-import siteConfig from '../siteConfig'
 import Reveal from './Reveal'
+import SectionHeader from './SectionHeader'
 
-export default function Testimonials() {
-  const { testimonios } = siteConfig
-
+// Componente reutilizable: recibe título + lista de testimonios por props
+// para poder usarse en cualquier página (Nosotros, Home, etc.).
+export default function Testimonials({ titulo, lista }) {
   return (
     <section className="bg-charcoal py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal className="max-w-2xl">
-          <h2 className="font-serif text-3xl font-semibold text-cream sm:text-4xl">{testimonios.titulo}</h2>
-        </Reveal>
+        <SectionHeader titulo={titulo} light />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {testimonios.lista.map((t, i) => (
+          {lista.map((t, i) => (
             <Reveal key={t.nombre + i} delay={i * 80}>
               <figure className="flex h-full flex-col rounded-2xl border border-cream/10 bg-cream/[0.04] p-7">
                 <Quote className="h-7 w-7 text-terracotta" strokeWidth={1.5} />

@@ -1,0 +1,15 @@
+# Necesario en hosting Apache (como Hostinger) porque la web usa
+# React Router: sin esto, refrescar o entrar directamente a una URL
+# como /shop o /consultoria daría un error 404.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Si el archivo o carpeta solicitado existe de verdad, se sirve tal cual.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Cualquier otra ruta se resuelve en index.html y React Router se
+  # encarga de mostrar la página correcta en el navegador.
+  RewriteRule . /index.html [L]
+</IfModule>

@@ -2,17 +2,17 @@
 // siteConfig.js
 // -------------------------------------------------------------
 // Edita este archivo para cambiar TODO el contenido de la web:
-// nombre del chef, ciudad, datos de contacto, textos, servicios,
-// FAQ y colores. No necesitas tocar los componentes.
+// marca, datos de contacto, textos de cada página, servicios,
+// catálogo de la tienda, formularios y colores. No necesitas
+// tocar los componentes ni las páginas para actualizar el copy.
 // =============================================================
 
 export const siteConfig = {
-  chef: {
-    nombre: '[NOMBRE DEL CHEF]',
-    apellido: '[APELLIDO]',
-    tituloProfesional: 'Chef consultor de cocina',
-    ciudad: '[CIUDAD]',
-    pais: 'España',
+  brand: {
+    nombre: 'GATROBATOS',
+    claim: 'Hostelería. Gestión. Profesionales. Gastronomía.',
+    descripcion:
+      'Un espacio creado desde la experiencia real en hostelería para conectar profesionales, proporcionar herramientas de gestión, mejorar los negocios y desarrollar proyectos gastronómicos.',
   },
 
   contacto: {
@@ -20,285 +20,690 @@ export const siteConfig = {
     telefono: '[TELÉFONO]',
     telefonoVisible: '[+34 000 000 000]',
     whatsappNumero: '34600000000', // Solo dígitos, con código de país, sin '+' ni espacios
-    whatsappMensajePredefinido:
-      'Hola, me interesa una consultoría para mi restaurante.',
+    whatsappMensajePredefinido: 'Hola, quiero más información sobre Gatrobatos.',
     ciudad: '[CIUDAD]',
-    zonaDeTrabajo: '[CIUDAD] y alrededores (también proyectos a distancia)',
+    zonaDeTrabajo: '[CIUDAD] y alrededores (proyectos también a distancia y en otras ciudades)',
   },
 
   redes: {
     instagram: 'https://instagram.com/[USUARIO]',
-    linkedin: 'https://linkedin.com/in/[USUARIO]',
-  },
-
-  meta: {
-    title: '[NOMBRE DEL CHEF] · Consultoría gastronómica para restaurantes',
-    description:
-      'Ayudo a dueños de restaurantes a ordenar su cocina por dentro: costes, carta, equipo y procesos. Consultoría gastronómica en [CIUDAD].',
+    linkedin: 'https://linkedin.com/company/[USUARIO]',
   },
 
   nav: [
-    { label: 'Servicios', href: '#servicios' },
-    { label: 'Método', href: '#metodo' },
-    { label: 'Sobre mí', href: '#sobre-mi' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Inicio', to: '/' },
+    { label: 'Somos Hostelería', to: '/somos-hosteleria' },
+    { label: 'Shop', to: '/shop' },
+    { label: 'I+Chef Consulting', to: '/consultoria' },
+    { label: 'Chef Privado', to: '/chef-privado' },
+    { label: 'Nosotros', to: '/nosotros' },
   ],
 
-  hero: {
-    kicker: 'Consultoría gastronómica para restaurantes',
-    titulo: 'Una cocina rentable, ordenada y que funciona sin que estés encima',
-    subtitulo:
-      'Entro en tu cocina como jefe de cocina consultor: reviso costes, carta, procesos y equipo, y dejo un plan claro para que tu restaurante gane dinero y deje de depender del caos del día a día.',
-    ctaPrimario: 'Solicitar consulta',
-    ctaSecundario: 'Escribir por WhatsApp',
-    datosConfianza: [
-      { valor: '[X]', label: 'años de experiencia en cocinas profesionales' },
-      { valor: '[X]+', label: 'restaurantes asesorados' },
-      { valor: '[X]%', label: 'mejora media en margen de carta' },
-    ],
+  // -----------------------------------------------------------
+  // SEO por página. Cada página aplica esto con el hook usePageMeta.
+  // -----------------------------------------------------------
+  meta: {
+    home: {
+      title: 'Gatrobatos · Hostelería, gestión, profesionales y gastronomía',
+      description:
+        'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado. Un solo proyecto nacido desde la experiencia real en hostelería.',
+    },
+    somosHosteleria: {
+      title: 'Somos Hostelería · Red profesional de Gatrobatos',
+      description:
+        'Únete a Somos Hostelería, la comunidad de profesionales de la restauración y la gastronomía: empleo, networking, formación, herramientas y colaboraciones.',
+    },
+    shop: {
+      title: 'Gatrobatos Shop · Herramientas para profesionales de hostelería',
+      description:
+        'Escandallos, fichas técnicas, control de food cost, checklists APPCC y packs profesionales creados desde la experiencia real en cocina.',
+    },
+    consulting: {
+      title: 'I+Chef Consulting · Consultoría gastronómica, gestión y RR. HH.',
+      description:
+        'Consultoría operativa, food cost y rentabilidad, diseño de carta, aperturas, formación y selección de profesionales HORECA para restaurantes, hoteles y grupos de restauración.',
+    },
+    chefPrivado: {
+      title: 'Chef Privado · Experiencias y servicios gastronómicos a medida',
+      description:
+        'Chef privado, eventos, acompañamiento de marca, experiencias gastronómicas, servicios para empresas y estancias con chef incluido.',
+    },
+    nosotros: {
+      title: 'Nosotros · Sobre Gatrobatos',
+      description:
+        'Gatrobatos nace de años de experiencia dentro de cocinas, restaurantes, hoteles, consultoría y gestión gastronómica.',
+    },
+    contacto: {
+      title: 'Contacto · Gatrobatos',
+      description: 'Escríbenos para resolver dudas sobre cualquiera de los proyectos de Gatrobatos.',
+    },
   },
 
-  problemas: {
-    titulo: 'Si tu restaurante se parece a esto, hablamos el mismo idioma',
-    subtitulo:
-      'La mayoría de los problemas de un restaurante no son de sala: son de cocina. Esto es lo que suelo encontrarme cuando entro por primera vez.',
-    lista: [
-      {
-        icono: 'TrendingDown',
-        titulo: 'Los costes se disparan y no sabes por qué',
-        texto:
-          'Facturas que suben, food cost que no cuadra y márgenes que se comen tu beneficio sin que nadie lo vea venir.',
-      },
-      {
-        icono: 'BookX',
-        titulo: 'Una carta que no sabes si es rentable',
-        texto:
-          'Platos que "funcionan bien" en sala pero que, plato a plato, apenas dejan margen o directamente pierden dinero.',
-      },
-      {
-        icono: 'LayoutGrid',
-        titulo: 'Cocina desorganizada por dentro',
-        texto:
-          'Cada turno improvisa, no hay fichas técnicas ni procesos claros, y todo depende de quién esté ese día.',
-      },
-      {
-        icono: 'Trash2',
-        titulo: 'Desperdicio de género a diario',
-        texto:
-          'Compras mal calculadas, mermas altas y producto que se tira porque no hay control de stock ni previsión.',
-      },
-      {
-        icono: 'Compass',
-        titulo: 'Equipo sin rumbo ni criterio común',
-        texto:
-          'Cada cocinero hace las cosas a su manera, no hay formación real y la calidad varía según quién cocine.',
-      },
+  // -----------------------------------------------------------
+  // HOME
+  // -----------------------------------------------------------
+  home: {
+    hero: {
+      kicker: 'Gatrobatos',
+      titulo: 'Hostelería. Gestión. Profesionales. Gastronomía.',
+      subtitulo:
+        'Un espacio creado desde la experiencia real en hostelería para conectar profesionales, proporcionar herramientas de gestión, mejorar los negocios y desarrollar proyectos gastronómicos.',
+      accesos: [
+        { label: 'Únete a Somos Hostelería', to: '/somos-hosteleria' },
+        { label: 'Descubre nuestras herramientas', to: '/shop' },
+        { label: 'Mejora la gestión de tu negocio', to: '/consultoria' },
+      ],
+    },
+    pilares: [
       {
         icono: 'Users',
-        titulo: 'Rotación de personal constante',
+        titulo: 'Somos Hostelería',
+        subtitulo: 'Red profesional',
         texto:
-          'Cuesta encontrar y retener buen equipo, y cada baja vuelve a poner la cocina patas arriba.',
-      },
-    ],
-  },
-
-  servicios: {
-    titulo: 'Cómo puedo ayudarte',
-    subtitulo:
-      'Trabajo cada proyecto a medida, pero estos son los servicios que más suelo aplicar en restaurantes como el tuyo.',
-    lista: [
-      {
-        icono: 'ClipboardCheck',
-        titulo: 'Auditoría de cocina',
-        texto:
-          'Análisis completo de tu cocina: costes, carta, procesos, equipo y organización. Diagnóstico claro y por escrito.',
+          'Comunidad de profesionales de la restauración y la gastronomía: empleo, networking, formación y colaboraciones.',
+        to: '/somos-hosteleria',
+        cta: 'Conocer la comunidad',
       },
       {
-        icono: 'BookOpenCheck',
-        titulo: 'Diseño de carta rentable',
+        icono: 'ShoppingBag',
+        titulo: 'Gatrobatos Shop',
+        subtitulo: 'Tienda de herramientas',
         texto:
-          'Rediseño tu carta con ingeniería de menú: qué platos potenciar, cuáles eliminar y cómo mejorar el margen sin perder identidad.',
-      },
-      {
-        icono: 'Calculator',
-        titulo: 'Control de costes y fichas técnicas',
-        texto:
-          'Fichas técnicas por plato, escandallos reales y un sistema para controlar el food cost mes a mes.',
-      },
-      {
-        icono: 'GraduationCap',
-        titulo: 'Organización y formación de equipo',
-        texto:
-          'Roles claros, rutinas de turno y formación práctica para que la cocina funcione igual de bien la tengas delante o no.',
-      },
-      {
-        icono: 'ShieldCheck',
-        titulo: 'Procesos y seguridad alimentaria',
-        texto:
-          'APPCC al día, protocolos de limpieza y trazabilidad, y procesos escritos para que nada dependa de la memoria de nadie.',
-      },
-      {
-        icono: 'DoorOpen',
-        titulo: 'Apertura de nuevos locales',
-        texto:
-          'Diseño de cocina, escandallos, carta y equipo desde cero para que tu apertura empiece con buen pie.',
+          'Documentos y herramientas profesionales listas para usar: escandallos, fichas técnicas, control de costes y packs completos.',
+        to: '/shop',
+        cta: 'Ver la tienda',
       },
       {
         icono: 'ChefHat',
-        titulo: 'Chef ejecutivo por temporada',
+        titulo: 'I+Chef Consulting',
+        subtitulo: 'Consultoría, gestión y RR. HH.',
         texto:
-          'Dirección de cocina temporal para cubrir una etapa concreta: lanzamiento, reestructuración o cambio de rumbo.',
+          'Consultoría operativa, food cost, diseño de carta, aperturas, formación y selección de profesionales HORECA.',
+        to: '/consultoria',
+        cta: 'Ver servicios de consultoría',
+      },
+      {
+        icono: 'Sparkles',
+        titulo: 'Chef Privado',
+        subtitulo: 'Servicios gastronómicos y experiencias',
+        texto: 'Comidas privadas, eventos, colaboraciones con marcas, experiencias gastronómicas y estancias.',
+        to: '/chef-privado',
+        cta: 'Descubrir experiencias',
       },
     ],
+    aboutTeaser: {
+      kicker: 'Sobre Gatrobatos',
+      titulo: 'Conocemos la hostelería porque hemos trabajado dentro de ella',
+      texto:
+        'Gatrobatos nace de años de experiencia dentro de cocinas, restaurantes, hoteles, consultoría, gestión gastronómica y desarrollo de proyectos vinculados con la hostelería. El objetivo es reunir bajo una misma plataforma profesionales, herramientas, conocimiento y servicios destinados a mejorar el sector.',
+      cta: 'Conoce el proyecto',
+      to: '/nosotros',
+    },
+    faq: {
+      titulo: 'Preguntas frecuentes',
+      lista: [
+        {
+          pregunta: '¿Gatrobatos es una sola empresa o varios proyectos distintos?',
+          respuesta:
+            'Gatrobatos es la marca que agrupa cuatro proyectos relacionados con la hostelería: Somos Hostelería (comunidad), Gatrobatos Shop (herramientas), I+Chef Consulting (consultoría y RR. HH.) y Chef Privado (servicios gastronómicos). Cada área tiene su propio enfoque, pero comparten la misma experiencia detrás.',
+        },
+        {
+          pregunta: '¿Tiene coste unirme a Somos Hostelería?',
+          respuesta: 'No. Unirse a la red profesional Somos Hostelería es gratuito y voluntario.',
+        },
+        {
+          pregunta: '¿Cómo compro los documentos de Gatrobatos Shop?',
+          respuesta:
+            'De momento la tienda funciona bajo pedido: eliges el pack o la herramienta que te interesa y nos contactas para gestionar la compra. Próximamente habilitaremos compra online directa.',
+        },
+        {
+          pregunta: '¿Puedo contratar solo una parte de la consultoría (por ejemplo, food cost)?',
+          respuesta:
+            'Sí. Los servicios de I+Chef Consulting pueden contratarse de forma puntual (una auditoría, el diseño de una carta) o como acompañamiento continuo, según lo que necesite tu negocio.',
+        },
+        {
+          pregunta: '¿El servicio de RR. HH. HORECA es un portal de empleo?',
+          respuesta:
+            'No funcionamos como un portal de empleo generalista. Antes de buscar candidatos, analizamos el puesto, la cocina y la operación real del negocio para presentar solo perfiles que encajen de verdad.',
+        },
+        {
+          pregunta: '¿Chef Privado solo trabaja en un tipo de evento?',
+          respuesta:
+            'No. Chef Privado cubre desde una cena familiar hasta una activación de marca en una feria, pasando por estancias de varios días o experiencias gastronómicas para empresas.',
+        },
+      ],
+    },
   },
 
-  metodo: {
-    titulo: 'Cómo trabajo',
-    subtitulo:
-      'Un proceso claro, sin humo, pensado para que veas resultados dentro de tu cocina, no solo en un informe.',
-    pasos: [
+  // -----------------------------------------------------------
+  // SOMOS HOSTELERÍA
+  // -----------------------------------------------------------
+  somosHosteleria: {
+    hero: {
+      kicker: 'Somos Hostelería · Red profesional',
+      titulo: 'Una red creada por profesionales del sector para profesionales del sector',
+      texto:
+        'Somos Hostelería nace para crear una comunidad formada por profesionales vinculados a la restauración y la gastronomía. La comunidad permite compartir conocimiento, contactos, oportunidades laborales, formación, herramientas, proyectos y colaboraciones.',
+      nota:
+        'Actualmente la red tiene presencia principalmente a través de WhatsApp y progresivamente se incorporarán nuevos servicios dentro de Gatrobatos.',
+      cta: 'Quiero unirme a Somos Hostelería',
+    },
+    perfiles: {
+      titulo: '¿Quién forma parte de la comunidad?',
+      lista: [
+        { icono: 'ChefHat', label: 'Chefs' },
+        { icono: 'ChefHat', label: 'Jefes de cocina' },
+        { icono: 'Utensils', label: 'Cocineros' },
+        { icono: 'LineChart', label: 'Directores de F&B' },
+        { icono: 'Users', label: 'Responsables de sala' },
+        { icono: 'Wine', label: 'Sumilleres' },
+        { icono: 'Cake', label: 'Pasteleros' },
+        { icono: 'Briefcase', label: 'Directivos' },
+        { icono: 'Building2', label: 'Empresarios' },
+        { icono: 'ClipboardCheck', label: 'Consultores' },
+        { icono: 'Truck', label: 'Proveedores' },
+        { icono: 'Search', label: 'Profesionales en búsqueda activa de empleo' },
+        { icono: 'UserRound', label: 'Otros perfiles relacionados con el sector' },
+      ],
+    },
+    beneficios: {
+      titulo: 'Qué puedes encontrar en la comunidad',
+      lista: [
+        'Conocimiento compartido entre profesionales del sector.',
+        'Contactos y networking dentro de la hostelería.',
+        'Oportunidades laborales.',
+        'Formación.',
+        'Herramientas profesionales.',
+        'Proyectos y colaboraciones.',
+      ],
+    },
+    form: {
+      titulo: 'Formulario de inscripción',
+      subtitulo: 'Cuéntanos quién eres y qué buscas. La participación es voluntaria y gratuita.',
+      tiposSituacion: ['Trabajando', 'Buscando empleo', 'Autónomo', 'Empresario', 'Estudiante', 'Disponible para nuevos proyectos', 'Otros'],
+      areasInteres: [
+        'Empleo',
+        'Networking',
+        'Gestión',
+        'Formación',
+        'Proveedores',
+        'Compras',
+        'Consultoría',
+        'Herramientas profesionales',
+        'Emprendimiento',
+        'Eventos',
+        'Colaboraciones',
+        'Otros',
+      ],
+      notaPrivacidad:
+        'Al enviar este formulario aceptas nuestra política de privacidad y el tratamiento de tus datos para fines de la comunidad Somos Hostelería.',
+    },
+  },
+
+  // -----------------------------------------------------------
+  // GATROBATOS SHOP
+  // -----------------------------------------------------------
+  shop: {
+    hero: {
+      kicker: 'Gatrobatos Shop',
+      titulo: 'Herramientas creadas para profesionales de hostelería',
+      texto:
+        'Tienda especializada en documentos, plantillas y sistemas de gestión creados desde la experiencia profesional. No son simples archivos de Excel o PDF: son herramientas profesionales listas para utilizar.',
+    },
+    categorias: [
       {
-        numero: '01',
-        titulo: 'Diagnóstico',
-        texto:
-          'Visito tu restaurante, reviso números, carta, procesos y equipo. Entiendo qué está pasando de verdad antes de proponer nada.',
+        icono: 'ChefHat',
+        titulo: 'Gestión de cocina',
+        items: ['Escandallos', 'Fichas técnicas', 'Recetarios', 'Producción', 'Inventarios', 'Pedidos', 'Mermas', 'Stocks'],
       },
       {
-        numero: '02',
-        titulo: 'Plan de acción',
-        texto:
-          'Te entrego un plan concreto y priorizado: qué cambiar primero, qué impacto tiene y en cuánto tiempo se nota.',
+        icono: 'Calculator',
+        titulo: 'Food Cost y rentabilidad',
+        items: ['Food cost', 'Ingeniería de menú', 'Márgenes', 'Precios de compra', 'Proveedores', 'Rentabilidad por plato'],
       },
       {
-        numero: '03',
-        titulo: 'Implementación en cocina',
-        texto:
-          'Trabajo codo a codo con tu equipo dentro de la cocina para poner en marcha cada cambio, no solo sobre el papel.',
+        icono: 'ClipboardList',
+        titulo: 'Operaciones',
+        items: ['Checklists', 'Partes diarios', 'Incidencias', 'Manuales operativos', 'Mantenimiento', 'Protocolos'],
       },
       {
-        numero: '04',
-        titulo: 'Seguimiento',
-        texto:
-          'Reviso resultados, ajusto lo necesario y me aseguro de que lo implementado se mantiene cuando yo ya no estoy.',
+        icono: 'Users',
+        titulo: 'Gestión de equipos',
+        items: ['Plantillas', 'Turnos', 'Funciones', 'Evaluación', 'Planificación', 'Organigramas'],
+      },
+      {
+        icono: 'ShieldCheck',
+        titulo: 'APPCC y seguridad alimentaria',
+        items: ['Registros', 'Controles', 'Checklists', 'Documentación'],
       },
     ],
+    packs: {
+      titulo: 'Packs profesionales',
+      subtitulo: 'Las herramientas de cada área agrupadas en un único pack listo para tu cocina.',
+      lista: [
+        { icono: 'ChefHat', titulo: 'Pack Jefe de Cocina', texto: 'Todo lo necesario para dirigir la cocina del día a día con criterio y orden.' },
+        { icono: 'Calculator', titulo: 'Pack Food Cost', texto: 'Escandallos, márgenes y control de costes listos para aplicar en tu carta.' },
+        { icono: 'ClipboardList', titulo: 'Pack Gestión de Cocina', texto: 'Producción, inventarios, pedidos y mermas bajo control.' },
+        { icono: 'DoorOpen', titulo: 'Pack Apertura', texto: 'Documentación y herramientas para abrir un local desde cero.' },
+        { icono: 'LineChart', titulo: 'Pack F&B Manager', texto: 'Herramientas de gestión pensadas para dirección de F&B.' },
+        { icono: 'Truck', titulo: 'Pack Compras y Proveedores', texto: 'Control de proveedores, precios de compra y pedidos.' },
+        { icono: 'Factory', titulo: 'Pack Producción', texto: 'Planificación y control de producción para cocinas de volumen.' },
+      ],
+    },
+    cta: {
+      titulo: '¿No encuentras lo que necesitas?',
+      texto: 'Cuéntanos qué herramienta necesita tu cocina y te decimos si ya la tenemos o podemos crearla.',
+    },
   },
 
-  resultados: {
-    titulo: 'Resultados que puedes esperar',
-    subtitulo:
-      'Cifras orientativas de proyectos anteriores. Cada restaurante es distinto, pero esta es la dirección habitual.',
-    nota: 'Datos de ejemplo — se sustituirán por cifras reales de proyectos.',
-    lista: [
-      { valor: '[X]%', label: 'reducción de food cost' },
-      { valor: '[X]%', label: 'mejora de margen en carta' },
-      { valor: '[X]%', label: 'menos desperdicio de género' },
-      { valor: '[X] semanas', label: 'para ver los primeros cambios' },
+  // -----------------------------------------------------------
+  // I+CHEF CONSULTING
+  // -----------------------------------------------------------
+  consulting: {
+    hero: {
+      kicker: 'I+Chef Consulting',
+      titulo: 'Consultoría especializada en hostelería',
+      texto:
+        'Convertimos experiencia, datos, procesos y personas en negocios mejor organizados, gestionados y rentables.',
+    },
+    quienes: {
+      titulo: 'Prestamos servicio a',
+      lista: [
+        { icono: 'Store', label: 'Restaurantes' },
+        { icono: 'Hotel', label: 'Hoteles' },
+        { icono: 'Building2', label: 'Grupos de restauración' },
+        { icono: 'Truck', label: 'Caterings' },
+        { icono: 'Package', label: 'Empresas de alimentación' },
+        { icono: 'Boxes', label: 'Proveedores' },
+        { icono: 'Rocket', label: 'Emprendedores' },
+        { icono: 'Sparkles', label: 'Proyectos gastronómicos' },
+      ],
+    },
+    nav: [
+      { label: 'Consultoría operativa', href: '#operativa' },
+      { label: 'Food cost y rentabilidad', href: '#food-cost' },
+      { label: 'Oferta gastronómica', href: '#oferta' },
+      { label: 'Aperturas', href: '#aperturas' },
+      { label: 'Formación', href: '#formacion' },
+      { label: 'RR. HH. HORECA', href: '#rrhh' },
     ],
-  },
-
-  sobreMi: {
-    titulo: 'Sobre mí',
-    parrafos: [
-      'Soy [NOMBRE DEL CHEF], cocinero de formación y consultor de cocina desde hace [AÑOS DE EXPERIENCIA] años. He pasado por cocinas de [TIPO DE RESTAURANTES/ESTRELLAS/EXPERIENCIA] antes de dedicarme a ayudar a otros dueños de restaurante a poner orden en la suya.',
-      'No vengo a darte una charla de gestión ni un informe que nadie va a leer. Entro en tu cocina, me pongo el delantal si hace falta y trabajo con tu equipo hasta que los cambios se quedan.',
-      'Mi filosofía es simple: una cocina rentable no está reñida con una cocina que cocina bien. Se puede tener las dos cosas si se ordena por dentro.',
-    ],
-    firma: '[NOMBRE DEL CHEF]',
-    cargo: '[TÍTULO / EX-RESTAURANTE / CREDENCIAL DESTACADA]',
-  },
-
-  testimonios: {
-    titulo: 'Lo que dicen quienes ya han trabajado conmigo',
-    lista: [
-      {
+    operativa: {
+      id: 'operativa',
+      icono: 'ClipboardCheck',
+      titulo: 'Consultoría operativa',
+      items: [
+        'Análisis del funcionamiento del establecimiento',
+        'Organización de cocina',
+        'Procesos',
+        'Producción',
+        'Compras',
+        'Stocks',
+        'Inventarios',
+        'Mermas',
+        'Organización de equipos',
+        'Optimización de procedimientos',
+        'Implantación de herramientas de control',
+      ],
+    },
+    foodCost: {
+      id: 'food-cost',
+      icono: 'Calculator',
+      titulo: 'Food Cost y rentabilidad',
+      items: [
+        'Escandallos',
+        'Coste teórico y real',
+        'Análisis de proveedores',
+        'Control de precios',
+        'Ingeniería de menú',
+        'Márgenes',
+        'Optimización de compras',
+        'Rentabilidad por plato',
+        'Análisis de carta',
+      ],
+    },
+    oferta: {
+      id: 'oferta',
+      icono: 'BookOpenCheck',
+      titulo: 'Creación y optimización de oferta gastronómica',
+      items: [
+        'Diseño de cartas',
+        'Creación de conceptos',
+        'Desarrollo de recetas',
+        'Estandarización',
+        'Fichas técnicas',
+        'Presentación',
+        'Montaje',
+        'Actualización de oferta gastronómica',
+      ],
+    },
+    aperturas: {
+      id: 'aperturas',
+      icono: 'DoorOpen',
+      titulo: 'Aperturas y reorganización',
+      items: [
+        'Diseño operativo',
+        'Organización de espacios',
+        'Procesos',
+        'Documentación',
+        'Herramientas de gestión',
+        'Estructura de cocina',
+        'Definición de puestos',
+        'Formación de equipos',
+        'Implantación',
+        'Seguimiento',
+      ],
+    },
+    formacion: {
+      id: 'formacion',
+      icono: 'GraduationCap',
+      titulo: 'Formación',
+      items: [
+        'Formación de equipos',
+        'Gestión para jefes de cocina',
+        'Food cost',
+        'Compras',
+        'Organización',
+        'Producción',
+        'Gestión de equipos',
+        'Rentabilidad',
+        'Herramientas profesionales',
+        'Procedimientos',
+      ],
+    },
+    rrhh: {
+      id: 'rrhh',
+      hero: {
+        kicker: 'RR. HH. HORECA',
+        titulo: 'Encontramos profesionales que entienden tu negocio',
         texto:
-          '"[TESTIMONIO PLACEHOLDER] Desde que trabajamos juntos, por fin entiendo los números de mi cocina y he dejado de tener sustos a fin de mes."',
-        nombre: '[NOMBRE CLIENTE]',
-        cargo: 'Propietario/a, [NOMBRE RESTAURANTE], [CIUDAD]',
+          'I+Chef Consulting incorpora un servicio especializado de búsqueda y selección de profesionales para empresas de hostelería. El objetivo es ayudar a restaurantes, hoteles, grupos de restauración y otras empresas del sector a localizar perfiles adecuados para las necesidades reales de cada negocio.',
+        diferencia:
+          'No funcionamos como un portal de empleo generalista. La diferencia está en conocer previamente el puesto, la cocina, la operación y las necesidades reales del establecimiento.',
       },
-      {
-        texto:
-          '"[TESTIMONIO PLACEHOLDER] La carta nueva nos ha subido el margen sin subir precios. El equipo también está mucho más organizado."',
-        nombre: '[NOMBRE CLIENTE]',
-        cargo: 'Propietario/a, [NOMBRE RESTAURANTE], [CIUDAD]',
+      perfiles: {
+        titulo: 'Perfiles profesionales',
+        grupos: [
+          {
+            titulo: 'Cocina',
+            lista: ['Chef ejecutivo', 'Executive Chef', 'Jefe de cocina', 'Segundo jefe de cocina', 'Sous Chef', 'Cocinero', 'Jefe de partida', 'Pastelero', 'Ayudante de cocina'],
+          },
+          {
+            titulo: 'F&B y gestión',
+            lista: ['Director de F&B', 'F&B Manager', 'Director de restauración', 'Operations Manager', 'Area Manager', 'Responsable de compras', 'Controller F&B', 'Responsable de producción'],
+          },
+          {
+            titulo: 'Sala',
+            lista: ['Director de restaurante', 'Maître', 'Segundo maître', 'Jefe de sala', 'Sumiller', 'Camarero', 'Bartender', 'Otros perfiles especializados'],
+          },
+        ],
       },
-      {
-        texto:
-          '"[TESTIMONIO PLACEHOLDER] Vino en el momento en que más lo necesitábamos, antes de abrir el segundo local. Hoy los dos funcionan con el mismo criterio."',
-        nombre: '[NOMBRE CLIENTE]',
-        cargo: 'Propietario/a, [NOMBRE RESTAURANTE], [CIUDAD]',
+      proceso: {
+        titulo: 'Cómo funcionará el servicio',
+        pasos: [
+          {
+            numero: '01',
+            titulo: 'Análisis de necesidades',
+            texto:
+              'Antes de iniciar la búsqueda analizamos junto al cliente: tipo de establecimiento, concepto gastronómico, volumen de negocio, organización, equipo existente, funciones del puesto, experiencia necesaria, horario, responsabilidades, condiciones laborales, banda salarial e incorporación prevista.',
+          },
+          {
+            numero: '02',
+            titulo: 'Definición del perfil',
+            texto:
+              'Creamos conjuntamente el perfil profesional que realmente necesita el establecimiento, evitando el error habitual de buscar un puesto por su nombre sin definir qué necesita hacer esa persona.',
+          },
+          {
+            numero: '03',
+            titulo: 'Búsqueda de candidatos',
+            texto:
+              'Localizamos perfiles a través de la red profesional Somos Hostelería, la base profesional de Gatrobatos, networking, redes profesionales, búsqueda directa, portales profesionales y otras fuentes especializadas.',
+          },
+          {
+            numero: '04',
+            titulo: 'Preselección',
+            texto:
+              'Antes de presentar candidatos valoramos experiencia, trayectoria, conocimientos, funciones desarrolladas, disponibilidad, expectativas profesionales y salariales, y adecuación al puesto.',
+          },
+          {
+            numero: '05',
+            titulo: 'Entrevista profesional',
+            texto:
+              'Cuando el puesto lo requiere, realizamos una entrevista especializada antes de presentar el candidato, valorando el perfil desde el conocimiento real de la operación hostelera.',
+          },
+          {
+            numero: '06',
+            titulo: 'Presentación de candidatos',
+            texto:
+              'La empresa recibe únicamente los perfiles que han superado la fase inicial de selección, reduciendo tiempo y entrevistas innecesarias.',
+          },
+          {
+            numero: '07',
+            titulo: 'Coordinación del proceso',
+            texto: 'Nos encargamos del contacto con candidatos, la coordinación de entrevistas, el seguimiento y la comunicación entre las partes.',
+          },
+          {
+            numero: '08',
+            titulo: 'Incorporación y seguimiento',
+            texto: 'Cuando el servicio contratado lo incluye, realizamos seguimiento de la incorporación para comprobar la adaptación inicial.',
+          },
+        ],
       },
-    ],
+      relacionComunidad:
+        'La red Somos Hostelería tiene una relación estratégica con esta línea de negocio: los profesionales que lo deseen pueden indicar en su perfil "Disponible para nuevas oportunidades profesionales". La finalidad no es crear una bolsa de trabajo, sino una red profesional permanente del sector.',
+      empresas: {
+        titulo: '¿Buscas profesionales para tu negocio?',
+        texto: 'Podemos ayudarte a definir el perfil, localizar candidatos y realizar una primera selección profesional.',
+        cta: 'Busco profesionales',
+        tiposEstablecimiento: ['Restaurante', 'Hotel', 'Grupo de restauración', 'Catering', 'Empresa de alimentación', 'Otro'],
+      },
+      profesionales: {
+        titulo: '¿Quieres recibir oportunidades profesionales?',
+        texto: 'Los miembros de Somos Hostelería pueden indicar si desean participar en procesos de selección.',
+        cta: 'Quiero formar parte de la red profesional',
+      },
+    },
   },
 
-  paraQuienEs: {
-    titulo: '¿Para quién es esta consultoría?',
-    subtitulo: 'Trabajo con distintos tipos de negocio, siempre que haya una cocina real detrás.',
-    lista: [
-      { icono: 'Store', titulo: 'Restaurante independiente', texto: 'Uno o varios locales que necesitan orden y rentabilidad.' },
-      { icono: 'Hotel', titulo: 'Hotel', texto: 'Cocina de hotel que necesita procesos sólidos y control de costes.' },
-      { icono: 'Truck', titulo: 'Catering', texto: 'Operaciones de volumen que exigen escandallos y logística precisas.' },
-      { icono: 'PackageSearch', titulo: 'Dark kitchen', texto: 'Cocinas ocultas centradas en eficiencia, costes y delivery.' },
-      { icono: 'Rocket', titulo: 'Nueva apertura', texto: 'Proyectos que arrancan desde cero y quieren empezar bien.' },
+  // -----------------------------------------------------------
+  // CHEF PRIVADO
+  // -----------------------------------------------------------
+  chefPrivado: {
+    hero: {
+      kicker: 'Chef Privado',
+      titulo: 'Experiencias gastronómicas y servicios culinarios personalizados',
+      texto: 'Una propuesta profesional diseñada para particulares, empresas y marcas.',
+    },
+    areas: [
+      {
+        id: 'personalizado',
+        icono: 'UtensilsCrossed',
+        titulo: 'Chef Privado Personalizado',
+        items: [
+          'Comidas y cenas privadas',
+          'Celebraciones',
+          'Menús degustación',
+          'Experiencias gastronómicas',
+          'Servicio recurrente',
+          'Servicio familiar',
+          'Profesionales y deportistas',
+          'Menús personalizados',
+          'Residencias, villas y alojamientos privados',
+          'Servicios de uno o varios días',
+        ],
+      },
+      {
+        id: 'eventos',
+        icono: 'PartyPopper',
+        titulo: 'Eventos Privados',
+        items: [
+          'Celebraciones',
+          'Cumpleaños',
+          'Aniversarios',
+          'Eventos familiares',
+          'Cócteles',
+          'Cenas especiales',
+          'Presentaciones',
+          'Eventos corporativos',
+          'Fincas, domicilios y espacios privados',
+        ],
+        extra: {
+          titulo: 'Colaboradores disponibles',
+          items: ['Sala', 'Sumillería', 'Coctelería', 'Vajilla', 'Cristalería', 'Decoración', 'Montaje', 'Espacios', 'Producción'],
+        },
+      },
+      {
+        id: 'marcas',
+        icono: 'Award',
+        titulo: 'Marcas',
+        subareas: [
+          {
+            titulo: 'Acompañamiento de marca',
+            items: ['Chef embajador', 'Presentaciones de producto', 'Lanzamientos', 'Showcookings', 'Ferias', 'Congresos', 'Eventos corporativos', 'Activaciones', 'Demostraciones', 'Experiencias de producto', 'Presentaciones comerciales'],
+          },
+          {
+            titulo: 'Desarrollo para marcas',
+            items: ['Desarrollo de recetas', 'Aplicaciones gastronómicas', 'Test de producto', 'Recetarios', 'Contenido gastronómico', 'Formación comercial', 'Demostraciones', 'Producciones audiovisuales', 'Fotografía y vídeo mediante colaboradores'],
+          },
+        ],
+      },
+      {
+        id: 'experiencias',
+        icono: 'Flame',
+        titulo: 'Experiencias Gastronómicas',
+        items: ['Showcookings', 'Talleres', 'Masterclass', 'BBQ', 'Cocina al fuego', 'Cocina internacional', 'Experiencias temáticas', 'Catas', 'Maridajes', "Chef's table", 'Cocina interactiva'],
+      },
+      {
+        id: 'empresas',
+        icono: 'Building2',
+        titulo: 'Empresas',
+        items: ['Team building', 'Retos por equipos', 'Talleres', 'Showcooking corporativo', 'Eventos para clientes', 'Incentivos', 'Eventos internos', 'Experiencias directivas', 'Presentaciones'],
+      },
+      {
+        id: 'estancias',
+        icono: 'Home',
+        titulo: 'Estancias',
+        texto: 'Servicio de chef para varios días en villas, residencias, fincas, alojamientos premium, segundas residencias y vacaciones.',
+        items: ['Desayuno', 'Comida', 'Cena', 'Snacks', 'Compras', 'Despensa', 'Planificación', 'Eventos durante la estancia'],
+      },
     ],
+    proyectosEspeciales: {
+      icono: 'Star',
+      titulo: 'Proyectos especiales',
+      items: ['Producciones', 'Rodajes', 'Sesiones fotográficas', 'Pop-ups', 'Eventos especiales', 'Colaboraciones', 'Proyectos internacionales', 'Presentaciones', 'Desarrollo gastronómico', 'Otros proyectos vinculados con gastronomía'],
+    },
   },
 
-  faq: {
-    titulo: 'Preguntas frecuentes',
-    lista: [
-      {
-        pregunta: '¿Cuánto cuesta la consultoría?',
-        respuesta:
-          'Depende del alcance del proyecto: no es lo mismo una auditoría puntual que un acompañamiento de varios meses. Cuéntame tu caso y te paso una propuesta ajustada, sin compromiso.',
-      },
-      {
-        pregunta: '¿Cuánto dura el proceso?',
-        respuesta:
-          'Los proyectos suelen ir de [X semanas] a [X meses], según si es una intervención puntual o un acompañamiento continuo. En el diagnóstico inicial te doy un plazo concreto.',
-      },
-      {
-        pregunta: '¿Es un trabajo presencial?',
-        respuesta:
-          'La mayor parte del trabajo se hace de forma presencial en tu cocina, especialmente en la fase de implementación. Algunas partes (análisis de datos, seguimiento) pueden hacerse a distancia.',
-      },
-      {
-        pregunta: '¿Cómo garantizas la confidencialidad?',
-        respuesta:
-          'Toda la información de tu negocio (recetas, costes, proveedores) es estrictamente confidencial. Podemos firmar un acuerdo de confidencialidad (NDA) antes de empezar si lo necesitas.',
-      },
-      {
-        pregunta: '¿Trabajas con cualquier tipo de cocina o estilo?',
-        respuesta:
-          'Sí. Mi trabajo no es imponer un estilo de cocina, sino ordenar la gestión detrás de la tuya: costes, procesos y equipo, respetando tu identidad y tu carta.',
-      },
-      {
-        pregunta: '¿Qué pasa si mi equipo se resiste a los cambios?',
-        respuesta:
-          'Es habitual al principio. Parte de mi trabajo es involucrar al equipo desde el primer día, explicar el porqué de cada cambio y acompañar la implementación para que se adopte de verdad.',
-      },
-    ],
+  // -----------------------------------------------------------
+  // NOSOTROS
+  // -----------------------------------------------------------
+  nosotros: {
+    hero: {
+      kicker: 'Sobre Gatrobatos',
+      titulo: 'Conocemos la hostelería porque hemos trabajado dentro de ella',
+      texto:
+        'Gatrobatos nace de años de experiencia dentro de cocinas, restaurantes, hoteles, consultoría, gestión gastronómica y desarrollo de proyectos vinculados con la hostelería.',
+    },
+    mision: {
+      titulo: 'Qué queremos conseguir',
+      texto:
+        'El objetivo es reunir bajo una misma plataforma profesionales, herramientas, conocimiento y servicios destinados a mejorar el sector. Gatrobatos será la marca principal desde la que se agrupan diferentes proyectos, servicios y herramientas relacionados con la hostelería y la gastronomía profesional.',
+    },
+    vision: {
+      titulo: 'Hacia dónde vamos',
+      texto:
+        'La primera fase de Gatrobatos es comunidad + herramientas + consultoría + RR. HH. + servicios gastronómicos. La intención es evolucionar progresivamente hacia una plataforma profesional especializada en hostelería, utilizando la comunidad y las necesidades reales de profesionales y empresas para decidir qué nuevas soluciones desarrollar.',
+    },
+    roadmap: {
+      titulo: 'Próximos pasos',
+      subtitulo: 'La arquitectura de Gatrobatos está pensada para poder incorporar, más adelante:',
+      lista: [
+        'Área privada y registro profesional',
+        'Perfil profesional y base de candidatos',
+        'Ofertas de empleo',
+        'Suscripciones, cursos y formación',
+        'Biblioteca de recursos',
+        'Software de gestión y aplicación propia',
+        'Directorio profesional y marketplace de proveedores',
+        'Gestión de eventos',
+        'Herramientas online y dashboards',
+        'Comunidad ampliada',
+      ],
+    },
+    fundador: {
+      titulo: 'Quién está detrás',
+      parrafos: [
+        'Gatrobatos está impulsado por [NOMBRE DEL CHEF], cocinero de formación y consultor de cocina con [AÑOS DE EXPERIENCIA] años de experiencia en cocinas profesionales.',
+        'Después de pasar por distintas cocinas, restaurantes y proyectos de consultoría, decidió reunir en un solo lugar todo lo que un profesional u hostelero necesita: comunidad, herramientas, consultoría y servicios gastronómicos.',
+      ],
+      firma: '[NOMBRE DEL CHEF]',
+      cargo: 'Fundador de Gatrobatos',
+    },
+    testimonios: {
+      titulo: 'Lo que dicen quienes ya han trabajado con nosotros',
+      lista: [
+        {
+          texto:
+            '"[TESTIMONIO PLACEHOLDER] Desde que trabajamos juntos, por fin entiendo los números de mi cocina y he dejado de tener sustos a fin de mes."',
+          nombre: '[NOMBRE CLIENTE]',
+          cargo: 'Propietario/a, [NOMBRE RESTAURANTE], [CIUDAD]',
+        },
+        {
+          texto:
+            '"[TESTIMONIO PLACEHOLDER] Encontramos al jefe de cocina que necesitábamos en unas semanas, con un perfil que de verdad encajaba con nuestra operación."',
+          nombre: '[NOMBRE CLIENTE]',
+          cargo: 'Director/a de F&B, [NOMBRE EMPRESA]',
+        },
+        {
+          texto:
+            '"[TESTIMONIO PLACEHOLDER] El chef privado hizo que la cena de la marca fuera memorable, muy profesional de principio a fin."',
+          nombre: '[NOMBRE CLIENTE]',
+          cargo: 'Responsable de marca, [NOMBRE EMPRESA]',
+        },
+      ],
+    },
   },
 
-  contactoForm: {
-    titulo: 'Hablemos de tu restaurante',
-    subtitulo:
-      'Cuéntame en qué punto está tu cocina y te respondo personalmente para ver cómo puedo ayudarte.',
-    tiposDeNegocio: [
-      'Restaurante independiente',
-      'Grupo de restauración',
-      'Hotel',
-      'Catering',
-      'Dark kitchen',
-      'Nueva apertura',
+  // -----------------------------------------------------------
+  // CONTACTO
+  // -----------------------------------------------------------
+  contactoPage: {
+    hero: {
+      kicker: 'Contacto',
+      titulo: 'Hablemos de tu proyecto',
+      texto: 'Cuéntanos qué necesitas y te respondemos personalmente para ver cómo Gatrobatos puede ayudarte.',
+    },
+    tiposConsulta: [
+      'Somos Hostelería',
+      'Gatrobatos Shop',
+      'I+Chef Consulting',
+      'RR. HH. HORECA',
+      'Chef Privado',
       'Otro',
     ],
   },
 
   footer: {
     descripcion:
-      'Consultoría gastronómica para dueños de restaurante que quieren una cocina ordenada, rentable y que funcione sin que estén encima cada día.',
-    copyright: `© ${new Date().getFullYear()} [NOMBRE DEL CHEF]. Todos los derechos reservados.`,
+      'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado, todo nacido desde la experiencia real en hostelería.',
+    columnas: [
+      {
+        titulo: 'Proyectos',
+        enlaces: [
+          { label: 'Somos Hostelería', to: '/somos-hosteleria' },
+          { label: 'Gatrobatos Shop', to: '/shop' },
+          { label: 'I+Chef Consulting', to: '/consultoria' },
+          { label: 'Chef Privado', to: '/chef-privado' },
+        ],
+      },
+      {
+        titulo: 'Gatrobatos',
+        enlaces: [
+          { label: 'Nosotros', to: '/nosotros' },
+          { label: 'Contacto', to: '/contacto' },
+        ],
+      },
+    ],
+    copyright: `© ${new Date().getFullYear()} Gatrobatos. Todos los derechos reservados.`,
   },
 }
 
