@@ -83,7 +83,7 @@ export default function Contacto() {
     <>
       <PageHero kicker={contactoPage.hero.kicker} titulo={contactoPage.hero.titulo} texto={contactoPage.hero.texto} />
 
-      <section className="bg-olive pb-20 sm:pb-28">
+      <section className="bg-olive py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <Reveal>
             <div className="space-y-6">
