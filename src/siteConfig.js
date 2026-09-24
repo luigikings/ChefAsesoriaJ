@@ -7,7 +7,18 @@
 // tocar los componentes ni las páginas para actualizar el copy.
 // =============================================================
 
+// Secciones que se pueden ocultar sin borrar su página ni su contenido.
+// La tienda está oculta hasta que haya productos a la venta:
+// cambia `shop` a `true` para que vuelva a aparecer en toda la web.
+const features = {
+  shop: false,
+}
+
+const onlyIf = (enabled, items) => (enabled ? items : [])
+
 export const siteConfig = {
+  features,
+
   brand: {
     nombre: 'GATROBATOS',
     claim: 'Hostelería. Gestión. Profesionales. Gastronomía.',
@@ -33,7 +44,7 @@ export const siteConfig = {
   nav: [
     { label: 'Inicio', to: '/' },
     { label: 'Somos Hostelería', to: '/somos-hosteleria' },
-    { label: 'Shop', to: '/shop' },
+    ...onlyIf(features.shop, [{ label: 'Shop', to: '/shop' }]),
     { label: 'I+Chef Consulting', to: '/consultoria' },
     { label: 'Chef Privado', to: '/chef-privado' },
     { label: 'Nosotros', to: '/nosotros' },
@@ -45,8 +56,9 @@ export const siteConfig = {
   meta: {
     home: {
       title: 'Gatrobatos · Hostelería, gestión, profesionales y gastronomía',
-      description:
-        'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado. Un solo proyecto nacido desde la experiencia real en hostelería.',
+      description: features.shop
+        ? 'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado. Un solo proyecto nacido desde la experiencia real en hostelería.'
+        : 'Gatrobatos agrupa una red profesional, consultoría gastronómica y servicios de chef privado. Un solo proyecto nacido desde la experiencia real en hostelería.',
     },
     somosHosteleria: {
       title: 'Somos Hostelería · Red profesional de Gatrobatos',
@@ -90,7 +102,7 @@ export const siteConfig = {
         'Un espacio creado desde la experiencia real en hostelería para conectar profesionales, proporcionar herramientas de gestión, mejorar los negocios y desarrollar proyectos gastronómicos.',
       accesos: [
         { label: 'Únete a Somos Hostelería', to: '/somos-hosteleria' },
-        { label: 'Descubre nuestras herramientas', to: '/shop' },
+        ...onlyIf(features.shop, [{ label: 'Descubre nuestras herramientas', to: '/shop' }]),
         { label: 'Mejora la gestión de tu negocio', to: '/consultoria' },
       ],
     },
@@ -104,15 +116,17 @@ export const siteConfig = {
         to: '/somos-hosteleria',
         cta: 'Conocer la comunidad',
       },
-      {
-        icono: 'ShoppingBag',
-        titulo: 'Gatrobatos Shop',
-        subtitulo: 'Tienda de herramientas',
-        texto:
-          'Documentos y herramientas profesionales listas para usar: escandallos, fichas técnicas, control de costes y packs completos.',
-        to: '/shop',
-        cta: 'Ver la tienda',
-      },
+      ...onlyIf(features.shop, [
+        {
+          icono: 'ShoppingBag',
+          titulo: 'Gatrobatos Shop',
+          subtitulo: 'Tienda de herramientas',
+          texto:
+            'Documentos y herramientas profesionales listas para usar: escandallos, fichas técnicas, control de costes y packs completos.',
+          to: '/shop',
+          cta: 'Ver la tienda',
+        },
+      ]),
       {
         icono: 'ChefHat',
         titulo: 'I+Chef Consulting',
@@ -144,18 +158,21 @@ export const siteConfig = {
       lista: [
         {
           pregunta: '¿Gatrobatos es una sola empresa o varios proyectos distintos?',
-          respuesta:
-            'Gatrobatos es la marca que agrupa cuatro proyectos relacionados con la hostelería: Somos Hostelería (comunidad), Gatrobatos Shop (herramientas), I+Chef Consulting (consultoría y RR. HH.) y Chef Privado (servicios gastronómicos). Cada área tiene su propio enfoque, pero comparten la misma experiencia detrás.',
+          respuesta: features.shop
+            ? 'Gatrobatos es la marca que agrupa cuatro proyectos relacionados con la hostelería: Somos Hostelería (comunidad), Gatrobatos Shop (herramientas), I+Chef Consulting (consultoría y RR. HH.) y Chef Privado (servicios gastronómicos). Cada área tiene su propio enfoque, pero comparten la misma experiencia detrás.'
+            : 'Gatrobatos es la marca que agrupa varios proyectos relacionados con la hostelería: Somos Hostelería (comunidad), I+Chef Consulting (consultoría y RR. HH.) y Chef Privado (servicios gastronómicos). Cada área tiene su propio enfoque, pero comparten la misma experiencia detrás.',
         },
         {
           pregunta: '¿Tiene coste unirme a Somos Hostelería?',
           respuesta: 'No. Unirse a la red profesional Somos Hostelería es gratuito y voluntario.',
         },
-        {
-          pregunta: '¿Cómo compro los documentos de Gatrobatos Shop?',
-          respuesta:
-            'De momento la tienda funciona bajo pedido: eliges el pack o la herramienta que te interesa y nos contactas para gestionar la compra. Próximamente habilitaremos compra online directa.',
-        },
+        ...onlyIf(features.shop, [
+          {
+            pregunta: '¿Cómo compro los documentos de Gatrobatos Shop?',
+            respuesta:
+              'De momento la tienda funciona bajo pedido: eliges el pack o la herramienta que te interesa y nos contactas para gestionar la compra. Próximamente habilitaremos compra online directa.',
+          },
+        ]),
         {
           pregunta: '¿Puedo contratar solo una parte de la consultoría (por ejemplo, food cost)?',
           respuesta:
@@ -674,7 +691,7 @@ export const siteConfig = {
     },
     tiposConsulta: [
       'Somos Hostelería',
-      'Gatrobatos Shop',
+      ...onlyIf(features.shop, ['Gatrobatos Shop']),
       'I+Chef Consulting',
       'RR. HH. HORECA',
       'Chef Privado',
@@ -683,14 +700,15 @@ export const siteConfig = {
   },
 
   footer: {
-    descripcion:
-      'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado, todo nacido desde la experiencia real en hostelería.',
+    descripcion: features.shop
+      ? 'Gatrobatos agrupa una red profesional, una tienda de herramientas de gestión, consultoría gastronómica y servicios de chef privado, todo nacido desde la experiencia real en hostelería.'
+      : 'Gatrobatos agrupa una red profesional, consultoría gastronómica y servicios de chef privado, todo nacido desde la experiencia real en hostelería.',
     columnas: [
       {
         titulo: 'Proyectos',
         enlaces: [
           { label: 'Somos Hostelería', to: '/somos-hosteleria' },
-          { label: 'Gatrobatos Shop', to: '/shop' },
+          ...onlyIf(features.shop, [{ label: 'Gatrobatos Shop', to: '/shop' }]),
           { label: 'I+Chef Consulting', to: '/consultoria' },
           { label: 'Chef Privado', to: '/chef-privado' },
         ],

@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import siteConfig from './siteConfig'
 import Layout from './layouts/Layout'
 import Home from './pages/Home'
 import SomosHosteleria from './pages/SomosHosteleria'
@@ -16,7 +17,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/somos-hosteleria" element={<SomosHosteleria />} />
-        <Route path="/shop" element={<Shop />} />
+        {siteConfig.features.shop && <Route path="/shop" element={<Shop />} />}
         <Route path="/consultoria" element={<Consulting />} />
         <Route path="/chef-privado" element={<ChefPrivado />} />
         <Route path="/nosotros" element={<Nosotros />} />

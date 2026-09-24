@@ -62,8 +62,8 @@ export default function Home() {
       {/* PILARES */}
       <section className="bg-cream py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <SectionHeader kicker="Cuatro proyectos, una misma experiencia" titulo="Todo lo que necesitas dentro de Gatrobatos" />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <SectionHeader kicker="Varios proyectos, una misma experiencia" titulo="Todo lo que necesitas dentro de Gatrobatos" />
+          <div className={`mt-12 grid gap-6 sm:grid-cols-2 ${home.pilares.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
             {home.pilares.map((pilar, i) => (
               <PillarCard key={pilar.to} {...pilar} delay={i * 60} />
             ))}

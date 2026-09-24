@@ -54,7 +54,7 @@ The site is a **multi-page** React app (client-side routed with React Router) ra
 |---|---|---|
 | `/` | Home | Landing page introducing Gatrobatos and linking to all four pillars |
 | `/somos-hosteleria` | Somos Hostelería | Community pitch + membership sign-up form |
-| `/shop` | Gatrobatos Shop | Tool categories + professional packs (catalog, no online checkout yet) |
+| `/shop` | Gatrobatos Shop | Tool categories + professional packs (catalog, no online checkout yet). **Currently hidden** — see [Hiding the Shop](#hiding-the-shop) |
 | `/consultoria` | I+Chef Consulting | All consulting service lines + the two RR. HH. HORECA forms |
 | `/chef-privado` | Chef Privado | The six private-chef/event service areas |
 | `/nosotros` | Nosotros | Brand story, founder bio, roadmap, testimonials |
@@ -157,6 +157,18 @@ You should almost never need to touch a page or component file. Nearly everythin
 Placeholders are written in **UPPERCASE with brackets** (e.g. `[NOMBRE DEL CHEF]`, `[CIUDAD]`, `[AÑOS DE EXPERIENCIA]`) so they're easy to find and replace before launch.
 
 Icons referenced in `siteConfig.js` (e.g. `"ChefHat"`) are resolved through [`src/lib/icons.js`](src/lib/icons.js) — add new [lucide-react](https://lucide.dev/icons) icons there if you introduce content that needs one.
+
+### Hiding the Shop
+
+The Shop is currently **hidden** (there are no products for sale yet) but its page and content are kept intact. It's controlled by a single toggle at the top of [`src/siteConfig.js`](src/siteConfig.js):
+
+```js
+const features = {
+  shop: false, // set to true to show the Shop again
+}
+```
+
+With `shop: false`, the `/shop` route is disabled (it shows the 404 page) and every link, home card, FAQ entry and contact-form option pointing to it is removed. Setting it back to `true` restores all of them. The only thing the toggle can't reach is the static SEO text in `index.html` — re-add the Shop mention there by hand when you re-enable it.
 
 ## Forms
 
@@ -273,7 +285,7 @@ El sitio es una app de React **multi-página** (con enrutamiento del lado del cl
 |---|---|---|
 | `/` | Inicio | Landing que presenta Gatrobatos y enlaza a los cuatro pilares |
 | `/somos-hosteleria` | Somos Hostelería | Presentación de la comunidad + formulario de inscripción |
-| `/shop` | Gatrobatos Shop | Categorías de herramientas + packs profesionales (catálogo, sin compra online todavía) |
+| `/shop` | Gatrobatos Shop | Categorías de herramientas + packs profesionales (catálogo, sin compra online todavía). **Oculta de momento** — ver [Ocultar la tienda](#ocultar-la-tienda) |
 | `/consultoria` | I+Chef Consulting | Todas las líneas de consultoría + los dos formularios de RR. HH. HORECA |
 | `/chef-privado` | Chef Privado | Las seis áreas de servicio de chef privado / eventos |
 | `/nosotros` | Nosotros | Historia de la marca, biografía del fundador, roadmap, testimonios |
@@ -376,6 +388,18 @@ Casi nunca vas a necesitar tocar un archivo de página o componente. Prácticame
 Los marcadores están escritos **en mayúsculas y entre corchetes** (p. ej. `[NOMBRE DEL CHEF]`, `[CIUDAD]`, `[AÑOS DE EXPERIENCIA]`) para que sean fáciles de encontrar y sustituir antes de publicar.
 
 Los iconos referenciados en `siteConfig.js` (p. ej. `"ChefHat"`) se resuelven a través de [`src/lib/icons.js`](src/lib/icons.js) — añade ahí nuevos iconos de [lucide-react](https://lucide.dev/icons) si incorporas contenido que los necesite.
+
+### Ocultar la tienda
+
+La tienda está **oculta** de momento (todavía no hay productos a la venta), pero su página y su contenido se conservan intactos. Se controla con un único interruptor al inicio de [`src/siteConfig.js`](src/siteConfig.js):
+
+```js
+const features = {
+  shop: false, // pon true para volver a mostrar la tienda
+}
+```
+
+Con `shop: false`, la ruta `/shop` queda desactivada (muestra la página 404) y desaparecen todos los enlaces, la tarjeta de la home, la pregunta del FAQ y la opción del formulario de contacto que apuntan a ella. Al volver a ponerlo en `true` reaparece todo. Lo único que el interruptor no controla son los textos SEO estáticos de `index.html`: al reactivarla, vuelve a añadir ahí la mención a la tienda a mano.
 
 ## Formularios
 
